@@ -1,5 +1,5 @@
 ### Student management system app
-<p>Another project to learn and practice Java. A student database application that manages student enrollments and balance. It should do the following
+<p>Another project to learn and practice Java. A student database application that manages student enrollments and balance. It should do the following:</p>
 
 - Ask the user how many new student will be added to the database
 - User should be prompted to enter the name and tear for each student
