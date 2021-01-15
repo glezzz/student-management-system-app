@@ -7,7 +7,7 @@ public class Student {
     private final String lastName;
     private int year;
     private String studentID;
-    private String courses = "";
+    private StringBuilder courses;
     private int tuitionBalance;
     private static int costOfCourse = 600;
     private static int id = 1000;
@@ -21,7 +21,7 @@ public class Student {
         System.out.print("Enter student last name: ");
         this.lastName = in.nextLine();
 
-        System.out.print("1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nEnter student grade level: ");
+        System.out.print("\n1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nEnter student grade level: ");
         this.year = in.nextInt();
 
         setStudentID();
@@ -53,13 +53,54 @@ public class Student {
     }
 
     // Enroll in courses
-    public void enroll() {
-        do {
-            System.out.println("Enter course to enroll (q to quit): ");
-            Scanner in = new Scanner(System.in);
-            String course = in.nextLine();
+    public String enroll() {
 
-            if (!course.equals("q")) {
+        do {
+            System.out.println("\n1 - History 101\n2 - Math 101\n3 - English 101\n4 - Chemistry 101\n5 " +
+                                "- Computer Science 101\nEnter course to enroll (6 to quit): ");
+            Scanner in = new Scanner(System.in);
+            int course = in.nextInt();
+            StringBuilder singleString = new StringBuilder();
+
+
+            if (course != 6) {
+                if (course == 1) {
+                    String courseName = "History 101";
+                    courses = singleString.append(courses).append("\n  ").append(courseName);
+                    tuitionBalance = tuitionBalance + costOfCourse;
+
+                } else if (course == 2) {
+                    String courseName = "Math 101";
+                    courses = singleString.append(courses).append("\n  ").append(courseName);
+                    tuitionBalance = tuitionBalance + costOfCourse;
+
+                } else if (course == 3) {
+                    String courseName = "English 101";
+                    courses = singleString.append(courses).append("\n  ").append(courseName);
+                    tuitionBalance = tuitionBalance + costOfCourse;
+
+                } else if (course == 4) {
+                    String courseName = "Chemistry 101";
+                    courses = singleString.append(courses).append("\n  ").append(courseName);
+                    tuitionBalance = tuitionBalance + costOfCourse;
+
+                } else if (course == 5) {
+                    String courseName = "Computer Science 101";
+                    courses = singleString.append(courses).append("\n  ").append(courseName);
+                    tuitionBalance = tuitionBalance + costOfCourse;
+                }
+                //later on add error message if another value is input
+
+            }
+        } while (true);
+
+
+        /*do {
+            System.out.println("1 - History 101\n2 - Math 101\n3 English 101\n4 - Chemistry\n5 - Computer Science\nEnter course to enroll (q to quit): ");
+            Scanner in = new Scanner(System.in);
+            String course = in.next();
+
+            /*if (!course.equals("q")) {
                 courses = courses + "\n  " + course;
                 tuitionBalance = tuitionBalance + costOfCourse;
 
@@ -67,14 +108,14 @@ public class Student {
                 break;
             }
             // replaced (1 != 0) with true
-        } while (true);
+        } while (true);*/
 
         //System.out.println("Enrolled in: " + courses);
     }
 
     // View balance
     public void viewBalance() {
-        System.out.println("Your balance now is: $" + tuitionBalance);
+        System.out.println("Your balance now is: $" + tuitionBalance  + "\n");
     }
 
     // pay tuition
@@ -95,7 +136,7 @@ public class Student {
                 " " + lastName.substring(0, 1).toUpperCase() + lastName.substring(1) +
                 "\nYear: " + convertYear(year) +
                 "\nStudent ID: " + studentID +
-                "\nCourses enrolled: " + courses.substring(0, 1).toUpperCase() + courses.substring(1) +
+                "\nCourses enrolled: " + courses +
                 "\nBalance: $" + tuitionBalance;
     }
 }
