@@ -1,11 +1,10 @@
 package studentdatabaseapp;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Student {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     private int year;
     private String studentID;
     private String courses = "";
@@ -28,7 +27,22 @@ public class Student {
         setStudentID();
 
         //System.out.println(firstName + " " + lastName + " " + year + " " + studentID);
+    }
 
+    //convert year number to year name
+    public String convertYear(int year) {
+        if (year == 1) {
+            return "Freshman";
+
+        } else if (year == 2) {
+            return "Sophomore";
+
+        } else if (year == 3) {
+            return "Junior";
+
+        } else {
+            return "Senior";
+        }
     }
 
     // Generate an ID
@@ -78,7 +92,7 @@ public class Student {
     // Show status
     public String toString() {
         return "Name: " + firstName + " " + lastName +
-                "\nYear: " + year +
+                "\nYear: " + convertYear(year) +
                 "\nStudent ID: " + studentID +
                 "\nCourses enrolled: " + courses +
                 "\nBalance: $" + tuitionBalance;
