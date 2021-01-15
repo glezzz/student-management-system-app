@@ -69,7 +69,7 @@ public class Student {
             // replaced (1 != 0) with true
         } while (true);
 
-        System.out.println("Enrolled in: " + courses);
+        //System.out.println("Enrolled in: " + courses);
     }
 
     // View balance
@@ -91,10 +91,11 @@ public class Student {
 
     // Show status
     public String toString() {
-        return "Name: " + firstName + " " + lastName +
+        return "Name: " + firstName.substring(0, 1).toUpperCase() + firstName.substring(1) +
+                " " + lastName.substring(0, 1).toUpperCase() + lastName.substring(1) +
                 "\nYear: " + convertYear(year) +
                 "\nStudent ID: " + studentID +
-                "\nCourses enrolled: " + courses +
+                "\nCourses enrolled: " + courses.substring(0, 1).toUpperCase() + courses.substring(1) +
                 "\nBalance: $" + tuitionBalance;
     }
 }
